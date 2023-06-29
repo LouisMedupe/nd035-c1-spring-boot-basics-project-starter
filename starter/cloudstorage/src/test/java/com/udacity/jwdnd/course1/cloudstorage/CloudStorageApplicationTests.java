@@ -78,8 +78,8 @@ class CloudStorageApplicationTests {
 		inputPassword.sendKeys(password);
 
 		// Attempt to sign up.
-		webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("buttonSignUp")));
-		WebElement buttonSignUp = driver.findElement(By.id("buttonSignUp"));
+		webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("signup-submit-button")));
+		WebElement buttonSignUp = driver.findElement(By.id("signup-submit-button"));
 		buttonSignUp.click();
 
 		/* Check that the sign up was successful. 
@@ -134,7 +134,9 @@ class CloudStorageApplicationTests {
 	public void testRedirection() {
 		// Create a test account
 		doMockSignUp("Redirection","Test","RT","123");
-		
+		doLogIn("UT", "123");
+		driver.get("http://localhost:" + this.port + "/some-random-page");
+		Assertions.assertFalse(driver.getPageSource().contains("Whitelabel Error Page"));
 		// Check if we have been redirected to the log in page.
 		Assertions.assertEquals("http://localhost:" + this.port + "/login", driver.getCurrentUrl());
 	}

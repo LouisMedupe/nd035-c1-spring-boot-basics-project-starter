@@ -89,7 +89,12 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.udacity.jwdnd.course1</groupId>
+            <artifactId>cloudstorage</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
